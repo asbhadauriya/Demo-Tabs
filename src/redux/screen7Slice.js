@@ -5,8 +5,13 @@ import axios from 'axios';
 
 const randomUser= 'https://randomuser.me/api/'
 export const fetchRandomData = createAsyncThunk('api/fetchData', async () => {
+ try{
   const response = await axios.get(randomUser);
   return response.data;
+ }
+ catch(err){
+  console.log(err);
+ }
 });
 
 const screen7Slice = createSlice({

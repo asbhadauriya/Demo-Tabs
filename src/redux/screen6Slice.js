@@ -5,8 +5,13 @@ import axios from 'axios';
 const dataUsa=(drilldowns,measures)=> `https://datausa.io/api/data?${drilldowns}=nation&measures=${measures}`;
 
 export const fetchDataUsa = createAsyncThunk('api/fetchData', async (drilldowns,measures) => {
+ try{
   const response = await axios.get(dataUsa(drilldowns,measures));
   return response.data;
+ }
+ catch(err){
+  console.log(err);
+ }
 });
 
 const screen6Slice = createSlice({

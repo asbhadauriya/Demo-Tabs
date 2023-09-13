@@ -4,8 +4,13 @@ import axios from 'axios';
 
 const publicApi = 'https://api.publicapis.org/entries'
 export const fetchApiData = createAsyncThunk('api/fetchData', async () => {
+ try{
   const response = await axios.get(publicApi);
   return response.data;
+  }
+  catch(err){
+    console.log(err);
+  }
 });
 
 const screen5Slice = createSlice({

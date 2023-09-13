@@ -17,15 +17,16 @@ function Screen7() {
   return (
     <Box>
     <h2>User List</h2>
-    <ul>
-      {page3Status!='pending'?page3Data?.results?.map((user, index) => (
+    
+    <ul className='center'>
+      {page3Status=='loading'? <span>
+      'Loading...'
+      </span>:page3Data?.results?.map((user, index) => (
         <li key={index}>
           Name: {user?.name?.first}, Age: {user?.dob?.age}, Phone: {user?.phone}, City: {user?.location.city}, State: {user?.location?.state}
         </li>
-      )):
-      <span>
-      'Loading...'
-      </span>
+      ))
+     
     }
     </ul>
   </Box>
